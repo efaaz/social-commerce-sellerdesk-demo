@@ -1,5 +1,5 @@
 "use client";
-import { Printer, Store } from "lucide-react";
+import { Printer } from "lucide-react";
 import type { Order } from "@/types";
 import { DELIVERY_AREA_LABELS } from "@/lib/constants";
 import { formatBDT, formatDateTime } from "@/lib/utils";
@@ -47,13 +47,21 @@ export function OrderSlipDialog({
             <div className="flex items-start justify-between gap-4 border-b pb-5">
               <div>
                 <div className="flex items-center gap-2">
-                  <Image
-                    src={shopInfo.logo || "/favicon.ico"}
-                    alt="Shop logo"
-                    width={50}
-                    height={42}
-                    className="rounded-full"
-                  />
+                  {shopInfo.logo ? (
+                    <Image
+                      src={shopInfo.logo}
+                      alt="Shop logo"
+                      className="h-auto w-[50px] rounded-full"
+                    />
+                  ) : (
+                    <Image
+                      src="/favicon.ico"
+                      alt="Shop logo"
+                      width={50}
+                      height={50}
+                      className="size-[50px] rounded-full object-cover"
+                    />
+                  )}
                   <h2 className="font-cursive text-xl font-semibold">
                     {shopInfo.shopeName}
                   </h2>
