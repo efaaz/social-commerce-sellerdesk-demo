@@ -1,26 +1,180 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: oklch(0.985 0.004 75);
+  --foreground: oklch(0.23 0.018 255);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.23 0.018 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.23 0.018 255);
+  --primary: oklch(0.63 0.15 37);
+  --primary-foreground: oklch(0.99 0.004 75);
+  --secondary: oklch(0.95 0.012 65);
+  --secondary-foreground: oklch(0.3 0.025 255);
+  --muted: oklch(0.96 0.008 70);
+  --muted-foreground: oklch(0.53 0.018 255);
+  --accent: oklch(0.95 0.018 55);
+  --accent-foreground: oklch(0.29 0.025 255);
+  --destructive: oklch(0.58 0.22 27);
+  --border: oklch(0.9 0.012 70);
+  --input: oklch(0.9 0.012 70);
+  --ring: oklch(0.68 0.12 38);
+  --radius: 0.7rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--border);
 }
-
+html {
+  min-width: 320px;
+}
 body {
+  min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.font-cursive {
+  font-family: var(--font-cursive), cursive;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+/* ========================================
+   Order Slip Print Styles
+======================================== */
+
+@media print {
+  @page {
+    size: A5 portrait;
+    margin: 10mm;
+  }
+
+  html,
+  body {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+
+  /*
+   * Radix Portal renders its children directly
+   * inside body. Hide the application and keep
+   * only the dialog content.
+   */
+  body > * {
+    display: none !important;
+  }
+
+  body > [data-slot="dialog-content"][data-print-dialog] {
+    display: block !important;
+
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    translate: none !important;
+
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: white !important;
+  }
+
+  /* Receipt only: hide header, footer and close button */
+  [data-print-dialog] > :not([data-print-root]) {
+    display: none !important;
+  }
+
+  /* Receipt dimensions and appearance */
+  [data-print-root] {
+    display: block !important;
+
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 4mm !important;
+
+    background: white !important;
+    color: #0f172a !important;
+
+    font-size: 10pt !important;
+    line-height: 1.5 !important;
+
+    box-shadow: none !important;
+
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  [data-print-root] h2 {
+    font-size: 15pt !important;
+  }
+
+  [data-print-root] table {
+    width: 100% !important;
+    font-size: 9pt !important;
+  }
+
+  [data-print-root] th,
+  [data-print-root] td {
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+  }
+
+  [data-print-root] tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
 }
