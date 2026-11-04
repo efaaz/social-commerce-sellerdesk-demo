@@ -4,7 +4,7 @@ import { Store } from "lucide-react";
 import { toast } from "sonner";
 import type { Order, PageKey, Product } from "@/types";
 import { NAV_ITEMS } from "@/lib/constants";
-import { getDashboardMetrics } from "@/lib/dashboard";
+import { getDashboardMetrics } from "@/service/dashboard.service";
 import { useSellerDesk } from "@/hooks/use-sellerdesk";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
@@ -20,7 +20,7 @@ import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { storage } from "@/lib/storage";
 
 export function SellerDeskApp() {
-  const {
+  const { 
     products,
     orders,
     deliveryCharges,

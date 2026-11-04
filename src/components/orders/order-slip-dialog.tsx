@@ -51,7 +51,7 @@ export function OrderSlipDialog({
                     <Image
                       src={shopInfo.logo}
                       alt="Shop logo"
-                      className="h-auto w-[50px] rounded-full"
+                      className="h-auto w-12.5 rounded-full"
                     />
                   ) : (
                     <Image
@@ -59,7 +59,7 @@ export function OrderSlipDialog({
                       alt="Shop logo"
                       width={50}
                       height={50}
-                      className="size-[50px] rounded-full object-cover"
+                      className="size-12.5 rounded-full object-cover"
                     />
                   )}
                   <h2 className="font-cursive text-xl font-semibold">

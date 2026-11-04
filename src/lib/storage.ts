@@ -78,6 +78,7 @@ export const storage = {
   },
 };
 
+// Type guard to check if a value is a valid DeliveryCharges object.
 function isDeliveryCharges(
   value: unknown,
 ): value is SellerDeskData["deliveryCharges"] {

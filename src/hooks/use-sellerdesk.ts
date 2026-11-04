@@ -18,11 +18,11 @@ import {
   createProduct,
   updateProduct,
   validateProductInput,
-} from "@/lib/product-service";
+} from "@/service/product.service";
 import {
   createOrder as createOrderService,
   transitionOrderStatus,
-} from "@/lib/order-service";
+} from "@/service/order.service";
 
 export function useSellerDesk() {
   const [products, setProducts] = useState<Product[]>([]);
