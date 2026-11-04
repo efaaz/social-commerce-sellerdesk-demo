@@ -1,11 +1,20 @@
-import { Button } from "@/components/ui/button";
+import { Suspense } from "react";
+import { Store } from "lucide-react";
+import { SellerDeskApp } from "@/components/sellerdesk-app";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Button>
-        Hello
-      </Button>
-    </main>
+    <Suspense
+      fallback={
+        <div className="flex min-h-svh items-center justify-center gap-3 bg-muted/30 text-sm text-muted-foreground">
+          <div className="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+            <Store className="size-5" />
+          </div>
+          Preparing your workspace…
+        </div>
+      }
+    >
+      <SellerDeskApp />
+    </Suspense>
   );
 }

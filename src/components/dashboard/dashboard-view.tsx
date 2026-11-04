@@ -298,7 +298,7 @@ function MetricCard({
   icon: typeof CircleDollarSign;
 }) {
   return (
-    <Card>
+    <Card className="py-0">
       <CardContent className="p-4">
         <div className="flex items-center justify-between">
           <p className="text-sm text-muted-foreground">{label}</p>
