@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SellerDesk | Credosis Phase 02
 
-## Getting Started
+SellerDesk is a lightweight workspace for small social-commerce sellers to manage products, inventory, customer orders, and order slips.
 
-First, run the development server:
+## Project context
+
+This project was built as a job application assignment for Credosis (Phase 02). It demonstrates a practical seller workflow, reusable interface components, client-side state management, and basic inventory rules.
+
+## Features
+
+- Dashboard with sales, order, profit, and low-stock summaries
+- Product and inventory management
+- Order creation and status updates, with stock adjustments when orders are confirmed or cancelled
+- Configurable delivery charges for inside and outside Dhaka
+- Printable order slips
+
+## Tech stack
+
+- Next.js 16 App Router, React 19, and TypeScript
+- Tailwind CSS v4
+- Local UI components using Base UI and Radix UI primitives
+- Sonner for notifications
+
+## Run locally
+
+Requires Bun 1.4.2 or later.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun install
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). Use `bun run build` to create a production build and `bun run lint` to check the code.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```text
+src/
+|-- app/                    # Route entry, root layout, and global styles
+|-- assets/images/          # Demo shop image
+|-- components/
+|   |-- dashboard/          # Dashboard view
+|   |-- layout/             # Sidebar and header
+|   |-- orders/             # Order views, dialogs, and slips
+|   |-- products/           # Product list and editor
+|   |-- settings/           # Delivery charge settings
+|   |-- shared/             # Shared status and empty-state components
+|   |-- ui/                 # Reusable UI primitives
+|   `-- sellerdesk-app.tsx  # App shell and screen navigation
+|-- hooks/
+|   `-- use-sellerdesk.ts   # Shared state and app actions
+|-- lib/
+|   |-- dashboard.ts        # Dashboard calculations
+|   |-- demo-data.ts        # Sample products and orders
+|   |-- order-service.ts    # Order validation and status rules
+|   |-- product-service.ts  # Product validation and updates
+|   |-- storage.ts          # Browser persistence
+|   |-- constants.ts        # Shared labels and defaults
+|   `-- utils.ts            # Shared helpers
+`-- types.ts                # Shared TypeScript types
+```
 
-## Learn More
+## How the workflow works
 
-To learn more about Next.js, take a look at the following resources:
+1. Add products and set their prices and stock.
+2. Create an order with customer, delivery, and product details.
+3. Confirm the order to reserve stock; mark it delivered when complete.
+4. Cancel a confirmed order to return its stock to inventory.
+5. View and print the order slip.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Why localStorage?
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Local storage keeps this application self-contained for an assignment demo: it needs no API, database, or account setup, while changes remain available after a browser refresh. Data is saved in the current browser profile only and is not shared between users or devices.
 
-## Deploy on Vercel
+The first visit loads sample products and orders. To reset the demo, run this in the browser console:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```js
+localStorage.removeItem("sellerdesk-data");
+localStorage.removeItem("sellerdesk-active-page");
+location.reload();
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Limitations
+
+- There is no authentication, backend, or multi-user data isolation.
+- Browser storage is suitable for this demo, not production data. A production app should validate stock changes on the server and persist them with database transactions.
+- Dashboard profit is an estimate based on recorded product costs and selling prices; it excludes other operating costs.
