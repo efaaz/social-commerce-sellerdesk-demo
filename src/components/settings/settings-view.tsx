@@ -33,8 +33,8 @@ const providers = [
     id: "steadfast",
     name: "Steadfast",
     logoUrl:
-      "https://www.steadfast.com.bd/assets/images/favicon_io/favicon-32x32.png",
-    unoptimized: false,
+      "https://www.google.com/s2/favicons?domain=www.steadfast.com.bd&sz=128",
+    unoptimized: true,
   },
 ];
 

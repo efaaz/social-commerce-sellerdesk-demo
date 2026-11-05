@@ -16,8 +16,9 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "www.steadfast.com.bd",
-        pathname: "/assets/images/favicon_io/favicon-32x32.png",
+        hostname: "www.google.com",
+        pathname: "/s2/favicons",
+        search: "?domain=www.steadfast.com.bd&sz=128",
       },
     ],
     dangerouslyAllowSVG: true,
