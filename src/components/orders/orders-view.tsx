@@ -227,6 +227,7 @@ export function OrdersView({
                       <Button
                         size="icon"
                         variant="ghost"
+                        disabled={order.status === "CANCELLED"}
                         aria-label={`Print ${order.id}`}
                         onClick={() => onPrint(order)}
                       >

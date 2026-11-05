@@ -4,7 +4,11 @@ SellerDesk is a lightweight workspace for small social-commerce sellers to manag
 
 ## Project context
 
-This project was built as a job application assignment for Credosis (Phase 02). It demonstrates a practical seller workflow, reusable interface components, client-side state management, and basic inventory rules.
+This project was built as a job application assignment for Credosis (Phase 02). The idea behind this project is to help small businesses that sell products through platforms like Facebook and Instagram.
+
+Many small sellers manage their orders through inbox or hand written notes. But As their businesses grow, tracking customer information, stock availability, and manage order status can become difficult.
+
+So I wanted to build a simple software solution that could make these operations more organized and easier to manage.
 
 ## Features
 
@@ -22,6 +26,7 @@ This project was built as a job application assignment for Credosis (Phase 02). 
 - Sonner for notifications
 
 ## Run locally
+I used bun as the package manager for this project Beacause it is faster than npm. You can install bun from [https://bun.sh/](https://bun.sh/).
 
 Requires Bun 1.4.2 or later.
 
@@ -33,6 +38,7 @@ bun run dev
 Open [http://localhost:3000](http://localhost:3000). Use `bun run build` to create a production build and `bun run lint` to check the code.
 
 ## Project structure
+
 
 ```text
 src/
@@ -60,6 +66,13 @@ src/
 `-- types.ts                # Shared TypeScript types
 ```
 
+## Here is main project components and their structure
+![alt project components](/src/assets/images/projectComponentStructure.png)
+
+## Here is the data flow and state management structure of the project
+![alt data flow and state management structure](/src/assets/images/state-dataflow-structure.png)
+
+
 ## How the workflow works
 
 1. Add products and set their prices and stock.
@@ -79,6 +92,8 @@ localStorage.removeItem("sellerdesk-data");
 localStorage.removeItem("sellerdesk-active-page");
 location.reload();
 ```
+
+To view this project demo video [Click here](https://youtu.be/vmUukOgjhGE)
 
 ## Limitations
 
