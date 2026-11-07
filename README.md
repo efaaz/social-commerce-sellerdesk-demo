@@ -1,12 +1,10 @@
-# SellerDesk | Credosis Phase 02
+# SellerDesk 
 
 SellerDesk is a lightweight workspace for small social-commerce sellers to manage products, inventory, customer orders, and order slips.
 
 ## Project context
 
-This project was built as a job application assignment for Credosis (Phase 02). The idea behind this project is to help small businesses that sell products through platforms like Facebook and Instagram.
-
-Many small sellers manage their orders through inbox or hand written notes. But As their businesses grow, tracking customer information, stock availability, and manage order status can become difficult.
+The idea behind this project is to help small businesses that sell products through platforms like Facebook and Instagram. Many small sellers manage their orders through inbox or hand written notes. But As their businesses grow, tracking customer information, stock availability, and manage order status can become difficult.
 
 So I wanted to build a simple software solution that could make these operations more organized and easier to manage.
 
